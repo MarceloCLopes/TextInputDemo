@@ -35,6 +35,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public boolean validateName(){
+        if (textEditName.getText().toString().trim().isEmpty()){
+            textInputName.setError("Enter Name");
+            requestFocus(textEditName);
+            return false;
+        } else {
+            if (textEditName.getText().toString().trim().length() < 3){
+                textInputName.setError("Minimum 3 Characters");
+                return false;
+            } else {
+                textInputName.setErrorEnabled(false);
+            }
+        }
+        return true;
+    }
+
 
 
 }
