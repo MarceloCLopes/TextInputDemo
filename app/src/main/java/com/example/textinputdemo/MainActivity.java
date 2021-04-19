@@ -3,6 +3,7 @@ package com.example.textinputdemo;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.google.android.material.textfield.TextInputEditText;
@@ -29,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //================== method requestFocus ======================
-    public void requestFocus(View view) {
+    private void requestFocus(View view) {
         if (view.requestFocus()){
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
     }
 
-    public boolean validateName(){
+    private boolean validateName(){
         if (textEditName.getText().toString().trim().isEmpty()){
             textInputName.setError("Enter Name");
             requestFocus(textEditName);
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public boolean validateContact(){
+    private boolean validateContact(){
         if (textEditContact.getText().toString().trim().isEmpty()){
             textInputContact.setError("Enter Contact");
             requestFocus(textEditContact);
@@ -65,6 +66,19 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return true;
+    }
+
+    private void submitForm(){
+        if (!validateName()){
+            return;
+        }
+        if (!validateContact()){
+            return;
+        }
+
+        String name = textEditName.getText().toString().trim() + "";
+        String contact = textEditContact.getText().toString().trim() + "";
+        Toast.makeText(getApplicationContext(), name + "\n" + contact + "\n OK", Toast.LENGTH_LONG).show();
     }
 
 }
