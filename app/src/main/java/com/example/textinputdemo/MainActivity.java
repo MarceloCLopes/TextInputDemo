@@ -27,6 +27,13 @@ public class MainActivity extends AppCompatActivity {
         textEditContact = findViewById(R.id.textEdit_Contact);
 
         btnSubmit = findViewById(R.id.btn_Submit);
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submitForm();
+            }
+        });
     }
 
     //================== method requestFocus ======================
@@ -80,5 +87,4 @@ public class MainActivity extends AppCompatActivity {
         String contact = textEditContact.getText().toString().trim() + "";
         Toast.makeText(getApplicationContext(), name + "\n" + contact + "\n OK", Toast.LENGTH_LONG).show();
     }
-
 }
