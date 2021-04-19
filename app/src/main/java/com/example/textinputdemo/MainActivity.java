@@ -51,6 +51,20 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
+    public boolean validateContact(){
+        if (textEditContact.getText().toString().trim().isEmpty()){
+            textInputContact.setError("Enter Contact");
+            requestFocus(textEditContact);
+            return false;
+        } else {
+            if (textEditContact.getText().toString().trim().length() < 10){
+                textInputContact.setError("Minimum 10 Characters");
+                return false;
+            } else {
+                textInputContact.setErrorEnabled(false);
+            }
+        }
+        return true;
+    }
 
 }
